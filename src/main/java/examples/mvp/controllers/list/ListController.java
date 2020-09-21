@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import examples.mvp.model.DataModel;
-import examples.mvp.model.Person;
+import examples.mvp.model.domainObjects.Person;
 
 public class ListController {
 
