@@ -1,4 +1,4 @@
-package examples.mvp.list;
+package examples.mvp.controllers.list;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;

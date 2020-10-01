@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examples.mvp.controllers.start_screen.MenuBarController">
+  <menus>
+    <Menu mnemonicParsing="false" text="File">
+      <items>
+            <MenuItem fx:id="menuItem_file_new" mnemonicParsing="false" onAction="#onAction_file_new" text="New" />
+            <MenuItem fx:id="menuItem_file_open" mnemonicParsing="false" onAction="#onAction_file_open" text="Open" />
+        <MenuItem fx:id="menuItem_file_exit" mnemonicParsing="false" onAction="#onAction_file_exit" text="Exit" />
+      </items>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Help">
+      <items>
+        <MenuItem fx:id="menuItem_help_about" mnemonicParsing="false" onAction="#onAction_help_about" text="About" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>

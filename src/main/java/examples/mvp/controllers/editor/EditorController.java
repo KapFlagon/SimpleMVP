@@ -1,4 +1,4 @@
-package examples.mvp.editor;
+package examples.mvp.controllers.editor;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

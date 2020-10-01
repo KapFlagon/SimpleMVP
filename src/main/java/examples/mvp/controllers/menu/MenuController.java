@@ -1,4 +1,4 @@
-package examples.mvp.menu;
+package examples.mvp.controllers.menu;
 
 import java.io.File;
 

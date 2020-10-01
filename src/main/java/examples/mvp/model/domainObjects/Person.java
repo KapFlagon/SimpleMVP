@@ -1,4 +1,4 @@
-package examples.mvp.model;
+package examples.mvp.model.domainObjects;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
