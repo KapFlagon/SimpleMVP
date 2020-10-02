@@ -65,6 +65,7 @@ public class StartScreen extends AbstractScreen {
 
     private void initMainMenuController(FXMLLoader mainMenuLoader) {
         mainMenuController = mainMenuLoader.getController();
+        mainMenuController.setParentStage(this.getParentStage());
     }
 
     private void initRecentItemsController(FXMLLoader recentItemsPaneLoader) {
@@ -73,6 +74,7 @@ public class StartScreen extends AbstractScreen {
 
     private void initMenuBarController(FXMLLoader menuBarLoader) {
         menuBarController = menuBarLoader.getController();
+        menuBarController.setParentStage(this.getParentStage());
     }
 
 
@@ -104,8 +106,6 @@ public class StartScreen extends AbstractScreen {
     private void addMenuBarToBorderPane() throws IOException {
         Path fxmlPath = Paths.get("/examples/mvp/screens/start_screen/StartScreen_MenuBar.fxml");
         FXMLLoader menuBarLoader = new FXMLLoader(getClass().getResource("StartScreen_MenuBar.fxml"));
-        menuBarLoader.setController(menuBarController);
-        menuBarController = new MenuBarController(getParentStage());
         borderPane.setTop(menuBarLoader.load());
         initMenuBarController(menuBarLoader);
     }
