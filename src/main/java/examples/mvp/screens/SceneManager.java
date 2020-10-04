@@ -1,33 +1,32 @@
 package examples.mvp.screens;
 
 import examples.mvp.application.PROGRAM_STATE;
+import examples.mvp.model.domainObjects.CrossScreenData;
 import examples.mvp.screens.start_screen.StartScreen;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class SceneManager {
     // Variables
-    private PROGRAM_STATE program_state;
+    private CrossScreenData crossScreenData;
     private Scene currentScene;
-    private Stage parentStage;
 
 
     // Constructors
-    public SceneManager(Stage parentStage) throws IOException {
-        this.parentStage = parentStage;
-        program_state = PROGRAM_STATE.START;
+    public SceneManager(Stage parentStage) throws IOException, URISyntaxException {
+        initCrossScreenData(parentStage);
         changeCurrentScene();
     }
 
 
     // Getters and Setters
-    public PROGRAM_STATE getProgram_state() {
-        return program_state;
+    public CrossScreenData getProgramData() {
+        return crossScreenData;
     }
-    public void setProgram_state(PROGRAM_STATE program_state) {
-        this.program_state = program_state;
+    public void setProgramData(CrossScreenData crossScreenData) {
+        this.crossScreenData = crossScreenData;
     }
 
     public Scene getCurrentScene() {
@@ -39,13 +38,16 @@ public class SceneManager {
 
 
     // Initialisation methods
+    public void initCrossScreenData(Stage parentStage) throws IOException, URISyntaxException {
+        crossScreenData = new CrossScreenData(parentStage, PROGRAM_STATE.START);
+    }
 
 
     // Other methods
     public void changeCurrentScene() throws IOException {
-        switch (program_state) {
+        switch (crossScreenData.getProgramState()) {
             case START:
-                StartScreen startScreen = new StartScreen(parentStage);
+                StartScreen startScreen = new StartScreen(crossScreenData);
                 currentScene = startScreen.getScene();
                 break;
             case EDIT:
@@ -54,7 +56,5 @@ public class SceneManager {
                 break;
         }
     }
-
-
 
 }
