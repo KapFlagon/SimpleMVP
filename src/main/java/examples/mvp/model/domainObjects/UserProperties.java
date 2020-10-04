@@ -16,7 +16,7 @@ public class UserProperties {
 
 
     // Constructors
-    public void PropertiesModel() {
+    public void UserProperties() {
         initAllUserPropertyAttributes();
 
     }
@@ -26,7 +26,6 @@ public class UserProperties {
     public String getSelectedSkin() {
         return selectedSkin;
     }
-
     public void setSelectedSkin(String selectedSkin) {
         this.selectedSkin = selectedSkin;
     }
@@ -34,11 +33,9 @@ public class UserProperties {
     public boolean getIsColourblindModeOn() {
         return isColourblindModeOn;
     }
-
     public void setColourblindModeOn(boolean colourblindModeOn) {
         this.isColourblindModeOn = colourblindModeOn;
     }
-
     public void setColourblindModeOn(String colourblindModeOnString) {
         this.isColourblindModeOn = Boolean.valueOf(colourblindModeOnString);
     }
@@ -46,11 +43,9 @@ public class UserProperties {
     public boolean getWillLoadMostRecentFile() {
         return willLoadMostRecentFile;
     }
-
     public void setWillLoadMostRecentFile(boolean willLoadMostRecentFile) {
         this.willLoadMostRecentFile = willLoadMostRecentFile;
     }
-
     public void setWillLoadMostRecentFile(String willLoadMostRecentFileString) {
         this.willLoadMostRecentFile = Boolean.valueOf(willLoadMostRecentFileString);
     }
@@ -58,7 +53,6 @@ public class UserProperties {
     public ArrayList<Path> getRecentItemPaths() {
         return recentItemPaths;
     }
-
     public void setRecentItemPaths(ArrayList<Path> recentItemPaths) {
         this.recentItemPaths = recentItemPaths;
     }
