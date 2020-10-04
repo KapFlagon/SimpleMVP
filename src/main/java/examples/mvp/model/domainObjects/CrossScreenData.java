@@ -1,9 +1,8 @@
 package examples.mvp.model.domainObjects;
 
 import examples.mvp.application.PROGRAM_STATE;
-import examples.mvp.utils.PropertiesFileHelper;
+import examples.mvp.utils.files.PropertiesFileHelper;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
