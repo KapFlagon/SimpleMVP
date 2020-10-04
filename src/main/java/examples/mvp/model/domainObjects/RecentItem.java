@@ -3,6 +3,8 @@ package examples.mvp.model.domainObjects;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.nio.file.Path;
+
 
 public class RecentItem {
 
@@ -12,10 +14,9 @@ public class RecentItem {
 
 
     // Constructors
-
-    public RecentItem(String itemPath, String buttonText) {
-        setItemPath(itemPath);
-        setButtonText(buttonText);
+    public RecentItem(Path itemPath) {
+        setItemPath(itemPath.toString());
+        setButtonText(itemPath.getFileName().toString());
     }
 
 
