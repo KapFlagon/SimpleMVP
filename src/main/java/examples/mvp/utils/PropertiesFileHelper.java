@@ -14,57 +14,49 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
 
+
 public class PropertiesFileHelper {
 
 
     // Variables
-    private Properties defaultPropertiesObject;
-    private Properties propertiesObject;
-    private Path propertiesFilePath;
 
 
     // Constructors
-    public PropertiesFileHelper() throws IOException, URISyntaxException {
-        initDefaultPropertiesObject();
-        initPropertiesObject();
-        initPropertiesFilePath();
-        loadSavedProperties();
-    }
 
 
     // Getters and Setters
-    private void setAndSavePropertyValue(String key, String value) throws IOException {
+    private static void setPropertyValue(Properties propertiesObject, String key, String value) throws IOException {
         propertiesObject.setProperty(key, value);
-        storeProperties();
+        //storeProperties();
     }
 
-    public String getSelectedSkinProperty() {
+    private static String getSelectedSkinProperty(Properties propertiesObject) {
         return propertiesObject.getProperty("selectedSkin");
     }
 
-    public void setAndSaveSelectedSkinProperty(String selectedSkinValue) throws IOException {
-        setAndSavePropertyValue("selectedSkin", selectedSkinValue);
+    private static void setSelectedSkinProperty(Properties propertiesObject, String selectedSkinValue) throws IOException {
+        setPropertyValue(propertiesObject, "selectedSkin", selectedSkinValue);
     }
 
-    public boolean getIsColourblindModeOnProperty() {
+    private static boolean getIsColourblindModeOnProperty(Properties propertiesObject) {
         return Boolean.valueOf(propertiesObject.getProperty("isColourblindMode"));
     }
 
-    public void setAndSavesColourblindModeOnProperty(boolean colourblindModeOnValue) throws IOException {
+    private static void setColourblindModeOnProperty(Properties propertiesObject, boolean colourblindModeOnValue) throws IOException {
         String stringBooleanValue = String.valueOf(colourblindModeOnValue);
-        setAndSavePropertyValue("isColourblindMode", stringBooleanValue);
+        setPropertyValue(propertiesObject,"isColourblindMode", stringBooleanValue);
     }
 
-    public boolean getWillLoadMostRecentFileProperty() {
+    private static boolean getWillLoadMostRecentFileProperty(Properties propertiesObject) {
         return Boolean.valueOf(propertiesObject.getProperty("willLoadMostRecentFile"));
     }
 
-    public void setAndSaveWillLoadMostRecentFileProperty(boolean willLoadMostRecentFileValue) throws IOException {
+    private static void setWillLoadMostRecentFileProperty(Properties propertiesObject, boolean willLoadMostRecentFileValue) throws IOException {
         String stringBooleanValue = String.valueOf(willLoadMostRecentFileValue);
-        setAndSavePropertyValue("willLoadMostRecentFile", stringBooleanValue);
+        setPropertyValue(propertiesObject,"willLoadMostRecentFile", stringBooleanValue);
     }
 
-    public ArrayList<Path> getRecentItemPathsProperties() {
+    private static ArrayList<Path> getRecentItemPathsProperties(Properties propertiesObject) {
         ArrayList<Path> recentFilePaths = new ArrayList<Path>();
         for (int iterator = 0; iterator < 5; iterator--) {
             int pathListPosition = iterator + 1;
@@ -78,19 +70,18 @@ public class PropertiesFileHelper {
         return recentFilePaths;
     }
 
-    public void setAndSaveRecentItemPathsProperties(ArrayList<Path> recentItemPathValues) throws IOException {
+    private static void setRecentItemPathsProperties(Properties propertiesObject, ArrayList<Path> recentItemPathValues) throws IOException {
         for (int iterator = 0; iterator < recentItemPathValues.size(); iterator++) {
             int pathListPosition = iterator + 1;
             String propertyName = "recentItemPath_0" + (pathListPosition);
             propertiesObject.setProperty(propertyName, recentItemPathValues.get(iterator).toString());
         }
-        storeProperties();
     }
 
 
     // Initialisation methods
-    public void initDefaultPropertiesObject() {
-        defaultPropertiesObject = new Properties();
+    private static Properties generateDefaultPropertiesObject() {
+        Properties defaultPropertiesObject = new Properties();
         UserProperties defaultUserProperties = new UserProperties();
         defaultPropertiesObject.setProperty("selectedSkin", defaultUserProperties.getSelectedSkin());
         defaultPropertiesObject.setProperty("isColourblindModeOn", String.valueOf(defaultUserProperties.getIsColourblindModeOn()));
@@ -100,41 +91,75 @@ public class PropertiesFileHelper {
             String propertyName = "recentItemPath_0" + (iterator);
             defaultPropertiesObject.setProperty(propertyName, "null");
         }
+        return defaultPropertiesObject;
     }
 
-    private void initPropertiesObject() {
-        propertiesObject = new Properties(defaultPropertiesObject);
-    }
-
-    public void initPropertiesFilePath() throws URISyntaxException {
-        propertiesFilePath = ProgramDirectoryHelper.parsePropertiesPath();
+    private static Path generatePropertiesFilePath() throws URISyntaxException {
+        return ProgramDirectoryHelper.parsePropertiesPath();
     }
 
     // Other methods
-    private void loadSavedProperties() throws IOException {
-        if (doesPropertiesFileExist()) {
-            loadProperties();
+    private static Properties loadSavedProperties(Properties propertiesObject, Path userPropertiesFilePath) throws IOException {
+        if (doesPropertiesFileExist(userPropertiesFilePath)) {
+            loadProperties(propertiesObject, userPropertiesFilePath);
+            return propertiesObject;
         } else {
-            createInitialPropertiesFile();
+            createInitialPropertiesFile(userPropertiesFilePath);
+            return propertiesObject;
         }
     }
 
-    private boolean doesPropertiesFileExist() {
+    private static boolean doesPropertiesFileExist(Path propertiesFilePath) {
         return FileAndDirectoryHelper.fileExists(propertiesFilePath);
     }
 
-    private void createInitialPropertiesFile() throws IOException {
-        FileAndDirectoryHelper.createFile(propertiesFilePath);
+    private static void createInitialPropertiesFile(Path userPropertiesFilePath) throws IOException {
+        FileAndDirectoryHelper.createFile(userPropertiesFilePath);
     }
 
-    public void loadProperties() throws IOException {
+    private static void loadProperties(Properties propertiesObject, Path propertiesFilePath) throws IOException {
         InputStream inputStream = new FileInputStream(propertiesFilePath.toString());
         propertiesObject.load(inputStream);
     }
 
-    public void storeProperties() throws IOException {
+    private static void storeProperties(Properties propertiesObject, Path propertiesFilePath) throws IOException {
         OutputStream outputStream = new FileOutputStream(propertiesFilePath.toString());
         propertiesObject.store(outputStream, null);
     }
+
+    private static UserProperties mapPropertiesObjectToUserProperties(Properties propertiesObject) {
+        UserProperties userProperties = new UserProperties();
+        userProperties.setSelectedSkin(getSelectedSkinProperty(propertiesObject));
+        userProperties.setColourblindModeOn(getIsColourblindModeOnProperty(propertiesObject));
+        userProperties.setWillLoadMostRecentFile(getWillLoadMostRecentFileProperty(propertiesObject));
+        userProperties.setRecentItemPaths(getRecentItemPathsProperties(propertiesObject));
+        return userProperties;
+    }
+
+    private static Properties mapUserPropertiesToPropertiesObject(UserProperties userProperties, Properties defaultPropertiesObject) throws IOException {
+        Properties propertiesObject = new Properties(defaultPropertiesObject);
+        setSelectedSkinProperty(propertiesObject, userProperties.getSelectedSkin());
+        setColourblindModeOnProperty(propertiesObject, userProperties.getIsColourblindModeOn());
+        setWillLoadMostRecentFileProperty(propertiesObject, userProperties.getWillLoadMostRecentFile());
+        setRecentItemPathsProperties(propertiesObject, userProperties.getRecentItemPaths());
+        return propertiesObject;
+    }
+
+
+    public static UserProperties readUserPropertiesFromFile() throws URISyntaxException, IOException {
+        Properties defaultPropertiesObject = generateDefaultPropertiesObject();
+        Properties savedPropertiesObject = new Properties(defaultPropertiesObject);
+        Path userPropertiesFilePath = generatePropertiesFilePath();
+        savedPropertiesObject = loadSavedProperties(savedPropertiesObject, userPropertiesFilePath);
+        return mapPropertiesObjectToUserProperties(savedPropertiesObject);
+    }
+
+    public static void writeUserPropertiesToFile(UserProperties userProperties) throws URISyntaxException, IOException {
+        Properties defaultPropertiesObject = generateDefaultPropertiesObject();
+        Properties mappedPropertiesObject = mapUserPropertiesToPropertiesObject(userProperties, defaultPropertiesObject);
+        Path userPropertiesFilePath = generatePropertiesFilePath();
+        storeProperties(mappedPropertiesObject, userPropertiesFilePath);
+    }
+
 
 }
