@@ -3,12 +3,12 @@ package examples.mvp.screens.start_screen;
 import examples.mvp.controllers.start_screen.MainMenuController;
 import examples.mvp.controllers.start_screen.MenuBarController;
 import examples.mvp.controllers.start_screen.RecentItemsController;
+import examples.mvp.model.domainObjects.CrossScreenData;
 import examples.mvp.screens.AbstractScreen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -26,8 +26,8 @@ public class StartScreen extends AbstractScreen {
 
 
     // Constructors
-    public StartScreen(Stage parentStage) throws IOException {
-        super(parentStage);
+    public StartScreen(CrossScreenData crossScreenData) throws IOException {
+        super(crossScreenData);
         initBorderPane();
         initSplitPane();
         fillSplitPane();
@@ -65,7 +65,7 @@ public class StartScreen extends AbstractScreen {
 
     private void initMainMenuController(FXMLLoader mainMenuLoader) {
         mainMenuController = mainMenuLoader.getController();
-        mainMenuController.setParentStage(this.getParentStage());
+        mainMenuController.setParentStage(getCrossScreenData().getParentStage());
     }
 
     private void initRecentItemsController(FXMLLoader recentItemsPaneLoader) {
@@ -74,7 +74,7 @@ public class StartScreen extends AbstractScreen {
 
     private void initMenuBarController(FXMLLoader menuBarLoader) {
         menuBarController = menuBarLoader.getController();
-        menuBarController.setParentStage(this.getParentStage());
+        menuBarController.setParentStage(getCrossScreenData().getParentStage());
     }
 
 
@@ -96,6 +96,7 @@ public class StartScreen extends AbstractScreen {
         FXMLLoader recentItemsPaneLoader = new FXMLLoader(getClass().getResource("StartScreen_RecentItems.fxml"));
         splitPane.getItems().add(recentItemsPaneLoader.load());
         initRecentItemsController(recentItemsPaneLoader);
+        // https://stackoverflow.com/questions/14187963/passing-parameters-javafx-fxml
     }
 
     private void fillBorderPane() throws IOException {
