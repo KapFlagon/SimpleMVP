@@ -1,8 +1,11 @@
 package examples.mvp.model.domainObjects;
 
 import examples.mvp.application.PROGRAM_STATE;
+import examples.mvp.utils.PropertiesFileHelper;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.Locale;
 
@@ -18,13 +21,15 @@ public class CrossScreenData {
 
 
     // Constructors
-    public CrossScreenData(Stage parentStage) {
+    public CrossScreenData(Stage parentStage) throws IOException, URISyntaxException {
         setParentStage(parentStage);
+        initUserProperties();
         initUserLocale();
     }
-    public CrossScreenData(Stage parentStage, PROGRAM_STATE programState) {
+    public CrossScreenData(Stage parentStage, PROGRAM_STATE programState) throws IOException, URISyntaxException {
         setParentStage(parentStage);
         setProgramState(programState);
+        initUserProperties();
         initUserLocale();
     }
     public CrossScreenData(Stage parentStage, UserProperties userProperties) {
@@ -58,8 +63,9 @@ public class CrossScreenData {
     public Path getSelectedFilePath() {
         return selectedFilePath;
     }
-    public void setSelectedFilePath(Path selectedFilePath) {
+    public void setSelectedFilePath(Path selectedFilePath) throws IOException {
         this.selectedFilePath = selectedFilePath;
+        userProperties.insertRecentItemPath(selectedFilePath);
     }
 
     public PROGRAM_STATE getProgramState() {
@@ -79,6 +85,10 @@ public class CrossScreenData {
     // Initialisation methods
     private void initUserLocale() {
         userLocale = Locale.getDefault();
+    }
+
+    private void initUserProperties() throws IOException, URISyntaxException {
+        userProperties = PropertiesFileHelper.readUserPropertiesFromFile();
     }
 
     // Other methods
