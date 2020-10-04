@@ -1,11 +1,11 @@
-package examples.mvp.utils;
+package examples.mvp.utils.gui;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 
-public class FileChooserHelper {
+public class FileChooserPopUp {
 
 
     // Variables
