@@ -18,7 +18,6 @@ public class UserProperties {
     // Constructors
     public void UserProperties() {
         initAllUserPropertyAttributes();
-
     }
 
 
@@ -67,7 +66,7 @@ public class UserProperties {
     }
 
     private void initSelectedSkin() {
-        selectedSkin = "KanbanBo_Light";
+        selectedSkin = "SimpleMVP_Light";
     }
 
     private void initColourblindModeOn() {
