@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="RI_VBox" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examples.mvp.controllers.start_screen.RecentItemsController">
+<VBox fx:id="recentItems_VBox" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examples.mvp.controllers.start_screen.RecentItemsController">
    <children>
       <Label alignment="TOP_CENTER" text="Recent Items" textAlignment="CENTER">
          <font>
