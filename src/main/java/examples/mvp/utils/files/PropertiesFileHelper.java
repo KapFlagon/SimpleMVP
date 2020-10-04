@@ -1,4 +1,4 @@
-package examples.mvp.utils;
+package examples.mvp.utils.files;
 
 
 import examples.mvp.model.domainObjects.UserProperties;
@@ -82,11 +82,15 @@ public class PropertiesFileHelper {
     // Initialisation methods
     private static Properties generateDefaultPropertiesObject() {
         Properties defaultPropertiesObject = new Properties();
-        UserProperties defaultUserProperties = new UserProperties();
-        defaultPropertiesObject.setProperty("selectedSkin", defaultUserProperties.getSelectedSkin());
-        defaultPropertiesObject.setProperty("isColourblindModeOn", String.valueOf(defaultUserProperties.getIsColourblindModeOn()));
-        defaultPropertiesObject.setProperty("willLoadMostRecentFile", String.valueOf(defaultUserProperties.getWillLoadMostRecentFile()));
-        ArrayList<Path> recentFilePaths = defaultUserProperties.getRecentItemPaths();
+        //UserProperties defaultUserProperties = new UserProperties();
+        //defaultPropertiesObject.setProperty("selectedSkin", defaultUserProperties.getSelectedSkin());
+        defaultPropertiesObject.setProperty("selectedSkin", "mvpExample_Light");
+        //defaultPropertiesObject.setProperty("isColourblindModeOn", String.valueOf(defaultUserProperties.getIsColourblindModeOn()));
+        defaultPropertiesObject.setProperty("isColourblindModeOn", String.valueOf(false));
+        //defaultPropertiesObject.setProperty("willLoadMostRecentFile", String.valueOf(defaultUserProperties.getWillLoadMostRecentFile()));
+        defaultPropertiesObject.setProperty("willLoadMostRecentFile", String.valueOf(false));
+        //ArrayList<Path> recentFilePaths = defaultUserProperties.getRecentItemPaths();
+        ArrayList<Path> recentFilePaths = new ArrayList<Path>(6);
         for (int iterator = 1; iterator <= recentFilePaths.size(); iterator++) {
             String propertyName = "recentItemPath_0" + (iterator);
             defaultPropertiesObject.setProperty(propertyName, "null");
