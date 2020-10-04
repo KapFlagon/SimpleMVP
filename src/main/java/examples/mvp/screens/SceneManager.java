@@ -13,6 +13,7 @@ public class SceneManager {
     private Scene currentScene;
     private Stage parentStage;
 
+
     // Constructors
     public SceneManager(Stage parentStage) throws IOException {
         this.parentStage = parentStage;
@@ -53,5 +54,7 @@ public class SceneManager {
                 break;
         }
     }
+
+
 
 }
