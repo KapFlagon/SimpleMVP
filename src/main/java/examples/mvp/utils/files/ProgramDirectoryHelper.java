@@ -1,4 +1,4 @@
-package examples.mvp.utils;
+package examples.mvp.utils.files;
 
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -17,7 +17,8 @@ public class ProgramDirectoryHelper {
             int indexOfFileName = classFileUrlString.lastIndexOf(".jar");
             parentFolderString = classFileUrlString.substring(0, indexOfFileName);
         } else {
-            int indexOfFileName = classFileUrlString.lastIndexOf("KanbanBo");
+            // TODO debug from here
+            int indexOfFileName = classFileUrlString.lastIndexOf("SimpleMVP");
             parentFolderString = classFileUrlString.substring(0, indexOfFileName);
         }
         Path executedDirectoryPath = Paths.get(parentFolderString);
@@ -32,7 +33,7 @@ public class ProgramDirectoryHelper {
 
     public static Path parsePropertiesPath() throws URISyntaxException {
         Path executedDirectoryPath = parseProgramDirectory();
-        Path propertiesFilePath = Paths.get(executedDirectoryPath.toString(), "KanbanBo.properties");
+        Path propertiesFilePath = Paths.get(executedDirectoryPath.toString(), "SimpleMVP.properties");
         return propertiesFilePath;
     }
 
