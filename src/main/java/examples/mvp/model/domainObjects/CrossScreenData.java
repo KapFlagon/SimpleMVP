@@ -69,6 +69,12 @@ public class CrossScreenData {
         this.programState = programState;
     }
 
+    public Locale getUserLocale() {
+        return userLocale;
+    }
+    public void setUserLocale(Locale userLocale) {
+        this.userLocale = userLocale;
+    }
 
     // Initialisation methods
     private void initUserLocale() {
