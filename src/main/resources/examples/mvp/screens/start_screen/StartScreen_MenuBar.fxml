@@ -10,7 +10,8 @@
       <items>
             <MenuItem fx:id="menuItem_file_new" mnemonicParsing="false" onAction="#onAction_file_new" text="New" />
             <MenuItem fx:id="menuItem_file_open" mnemonicParsing="false" onAction="#onAction_file_open" text="Open" />
-        <MenuItem fx:id="menuItem_file_exit" mnemonicParsing="false" onAction="#onAction_file_exit" text="Exit" />
+            <MenuItem fx:id="menuItem_file_preferences" mnemonicParsing="false" onAction="#onAction_file_preferences" text="Preferences" />
+            <MenuItem fx:id="menuItem_file_exit" mnemonicParsing="false" onAction="#onAction_file_exit" text="Exit" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="Help">
