@@ -1,9 +1,10 @@
 package examples.mvp.controllers.start_screen;
 
-import examples.mvp.utils.FileChooserHelper;
+import examples.mvp.utils.gui.FileChooserPopUp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainMenuController {
@@ -14,6 +15,8 @@ public class MainMenuController {
     private Button newFile;
     @FXML
     private Button openFile;
+    @FXML
+    private Label mainMenu_Title;
     private Stage parentStage;
 
 
@@ -37,13 +40,13 @@ public class MainMenuController {
     @FXML
     public void onAction_NewFile(ActionEvent event) {
         //
-        FileChooserHelper.createFile(parentStage);
+        FileChooserPopUp.createFile(parentStage);
     }
 
     @FXML
     public void onAction_OpenFile(ActionEvent event){
         //
-        FileChooserHelper.openFile(parentStage);
+        FileChooserPopUp.openFile(parentStage);
     }
 
 }
