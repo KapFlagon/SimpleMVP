@@ -1,9 +1,8 @@
-package examples.mvp.utils;
+package examples.mvp.utils.files;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.util.ArrayList;
