@@ -1,25 +1,26 @@
 package examples.mvp.screens;
 
-import javafx.stage.Stage;
+import examples.mvp.model.domainObjects.CrossScreenData;
+
 
 public class AbstractScreen {
 
 
     // Variables
-    private Stage parentStage;
+    private CrossScreenData crossScreenData;
 
     // Constructors
-    public AbstractScreen(Stage parentStage) {
-        setParentStage(parentStage);
+    public AbstractScreen(CrossScreenData crossScreenData) {
+        setCrossScreenData(crossScreenData);
     }
 
 
     // Getters and Setters
-    public Stage getParentStage() {
-        return parentStage;
+    public CrossScreenData getCrossScreenData() {
+        return crossScreenData;
     }
-    public void setParentStage(Stage parentStage) {
-        this.parentStage = parentStage;
+    public void setCrossScreenData(CrossScreenData crossScreenData) {
+        this.crossScreenData = crossScreenData;
     }
 
 
