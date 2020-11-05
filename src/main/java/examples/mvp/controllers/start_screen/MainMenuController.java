@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MainMenuController {
 
 
@@ -38,11 +40,10 @@ public class MainMenuController {
 
     // Other methods
     @FXML
-    public void onAction_NewFile(ActionEvent event) {
+    public void onAction_NewFile(ActionEvent event) throws IOException {
         //
         FileChooserPopUp.createFile(parentStage);
         // ToDo : Create helper class for DB connections
-        // ToDo : Create helper method for DB file creation
     }
 
     @FXML

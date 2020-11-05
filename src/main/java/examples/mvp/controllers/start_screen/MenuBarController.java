@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +47,7 @@ public class MenuBarController implements Initializable {
 
     // Other methods
     @FXML
-    public void onAction_file_new(ActionEvent event) {
+    public void onAction_file_new(ActionEvent event) throws IOException {
         System.out.println("New file");
         FileChooserPopUp.createFile(parentStage);
     }
