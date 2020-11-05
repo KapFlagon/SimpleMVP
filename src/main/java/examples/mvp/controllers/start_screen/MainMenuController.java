@@ -41,12 +41,16 @@ public class MainMenuController {
     public void onAction_NewFile(ActionEvent event) {
         //
         FileChooserPopUp.createFile(parentStage);
+        // ToDo : Create helper class for DB connections
+        // ToDo : Create helper method for DB file creation
     }
 
     @FXML
     public void onAction_OpenFile(ActionEvent event){
         //
         FileChooserPopUp.openFile(parentStage);
+        // ToDo : Create helper method for opening and loading DB file
+        // ToDo : Pass the loaded content to the next screen
     }
 
 }
