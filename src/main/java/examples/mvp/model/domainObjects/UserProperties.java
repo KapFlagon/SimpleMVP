@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class UserProperties {
 
     // Variables
-    private String selectedSkin;
-    private boolean isColourblindModeOn;
-    private boolean willLoadMostRecentFile;
+    private String selectedSkin = "SimpleMVP_Light";    // Initializing here with data because of static method usage
+    private boolean isColourblindModeOn = false;        // Initializing here with data because of static method usage
+    private boolean willLoadMostRecentFile = false;     // Initializing here with data because of static method usage
     private ArrayList<Path> recentItemPaths;
 
 
@@ -74,7 +74,7 @@ public class UserProperties {
     }
 
     private void initWillLoadMostRecentFile() {
-        willLoadMostRecentFile = true;
+        willLoadMostRecentFile = false;
     }
 
     private void initRecentItemPaths() {
