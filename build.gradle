@@ -26,4 +26,4 @@ javafx {
     //configuration = 'compileOnly'
 }
 
-mainClassName = "examples.mvp.application.ContactApp"
+mainClassName = "examples.mvp.application.SimpleMVP"

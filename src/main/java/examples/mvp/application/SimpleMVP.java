@@ -11,10 +11,11 @@ import examples.mvp.controllers.list.ListController;
 import examples.mvp.controllers.menu.MenuController;
 import examples.mvp.model.DataModel;
 
-public class ContactApp extends Application {
+public class SimpleMVP extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("SimpleMVP");
         SceneManager sceneManager = new SceneManager(primaryStage);
         primaryStage.setScene(sceneManager.getCurrentScene());
         primaryStage.show();
