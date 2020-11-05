@@ -37,7 +37,7 @@ public class FileChooserPopUp {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(titleText);
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("db files", ".db")
+                new FileChooser.ExtensionFilter("MVP db files", ".mvpdb")
         );
         return fileChooser;
     }
