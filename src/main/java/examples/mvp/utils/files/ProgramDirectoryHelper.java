@@ -17,7 +17,6 @@ public class ProgramDirectoryHelper {
             int indexOfFileName = classFileUrlString.lastIndexOf(".jar");
             parentFolderString = classFileUrlString.substring(0, indexOfFileName);
         } else {
-            // TODO debug from here
             int indexOfFileName = classFileUrlString.lastIndexOf("SimpleMVP");
             parentFolderString = classFileUrlString.substring(0, indexOfFileName);
         }
